@@ -46,7 +46,7 @@ template <typename S, typename... Args>
 void handle_assert(std::source_location location, const char* expression, const S& message, Args&&... args)
 {
 	auto format_string = fmt::string_view(message);
-	handle_assert_impl(location, expression, format_string, fmt::make_format_args(format_string, args...));
+	handle_assert_impl(location, expression, format_string, fmt::make_format_args(args...));
 }
 
 } // namespace error
