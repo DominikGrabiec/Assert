@@ -1,6 +1,6 @@
 # Assert
 
-Implementation of a flexible assert as described in [the blog article](https://www.dominikgrabiec.com/c++/2023/02/28/making_a_flexible_assert.html). Currently works in Windows using MSVC (Visual Studio 2022 and above), not tested extensively in other compilers (just run through Compiler Explorer).
+Implementation of a flexible assert as described in [the blog article](https://www.dominikgrabiec.com/c++/2023/02/28/making_a_flexible_assert.html), with updates described [in this article](https://www.dominikgrabiec.com/c++/2024/06/21/upgrading_assert_macro.html). Currently works in Windows using MSVC (Visual Studio 2022 and above), not tested extensively in other compilers (just run through Compiler Explorer).
 
 Note that this implementation isn't quite ready to use straight from the repository. The main customisation point is the `print_fatal_message` function in `Assert.cpp` which should be changed to suit your needs.
 * A call to flush your logging system should be added to the top of the function so that your logs are complete when the program exits.

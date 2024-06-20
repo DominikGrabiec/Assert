@@ -102,10 +102,11 @@ void handle_assert(std::source_location location, const char* expression, const 
 #define ASSERT(expression, ...) \
 	do \
 	{ \
-		if (!(expression)) \
+		if (!(expression)) [[unlikely]] \
 		{ \
 			error::handle_assert(std::source_location::current(), #expression ASSERT_MESSAGE(__VA_ARGS__)); \
 			__debugbreak(); \
+			std::terminate(); \
 		} \
 	} \
 	while (false)
@@ -113,10 +114,11 @@ void handle_assert(std::source_location location, const char* expression, const 
 #define VERIFY(expression, ...) \
 	do \
 	{ \
-		if (!(expression)) \
+		if (!(expression)) [[unlikely]] \
 		{ \
 			error::handle_assert(std::source_location::current(), #expression ASSERT_MESSAGE(__VA_ARGS__)); \
 			__debugbreak(); \
+			std::terminate(); \
 		} \
 	} \
 	while (false)
@@ -126,6 +128,7 @@ void handle_assert(std::source_location location, const char* expression, const 
 	{ \
 		error::handle_assert(std::source_location::current(), "Failed" ASSERT_MESSAGE(__VA_ARGS__)); \
 		__debugbreak(); \
+		std::terminate(); \
 	} \
 	while (false)
 
